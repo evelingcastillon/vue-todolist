@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <div id="app">
+
+        <div class="logo">
+            <img src="./assets/img/logo.png" alt="">
+        </div>
+        <div class="input">
+            <input type="text" v-model='newTask' placeholder="Add a Task here" @keyup.enter='addTask'>
+            <button @click='addTask'>Add</button>
+        </div>
+
+        <!-- TASKS -->
+        <div class="tasks" v-if='tasks.length > 0'>
+            <div class="task" v-for='(task, index) in tasks'>
+                <input type="text" v-model='tasks[index]'>
+                <i class="fas fa-check-circle" @click='pushComplete(index)'></i>
+                <i class="fas fa-trash" @click='removeTask(index)'></i>
+            </div>
+            
+        </div>
+        <div class="no_task" v-else>
+            <p>Nulla da fare!</p>
+        </div>
+
+        <!-- TASK COMPLETE -->
+        <div class="tasks" v-if='tasksComplete.length > 0'>
+
+        </div>
+
+        <div class="no_task" v-else>
+
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>

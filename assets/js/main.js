@@ -10,21 +10,28 @@ const app = new Vue ({
         newTask: '',
         counter: 0,
         tasks : [
-            'Learn JS',
-            'Learn CSS'
+            'Do something',
+            'Do else',
+            'Do something else'
         ],
-        tasksComplete: []
-
+        tasksComplete: [],
+        trash: []
     },
     methods: {
         addTask(){
-            this.tasks.push(this.newTask)
+            this.tasks.unshift(this.newTask);
+            this.newTask = ''
         },
         removeTask(index){
             this.tasks.splice(index, 1)
         },
         pushComplete(index){
-            this.tasksComplete.push(this.tasks[index])
+            this.tasksComplete.unshift(this.tasks[index])
+            this.tasks.splice(index, 1)
+        },
+        restoreCompletedTask(index, task){
+            this.tasks.unshift(task)
+            this.tasksComplete.splice(index, 1)
         }
     }
 })
